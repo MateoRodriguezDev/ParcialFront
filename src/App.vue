@@ -5,9 +5,13 @@ import { ref } from 'vue'
 
 // librerias
 import Sidebar from 'primevue/sidebar'
+import { useCartStore } from './stores/CarStore';
+import CartComponent from './components/CartComponent.vue';
 
 // Parcial: instanciar nuestro useCartStore en una variable const para utilizarla en el componente
+const cartStore = useCartStore()
 // Parcial: obtener la cantidad de libros en carrito del cartStore y pasarlo en qty tag
+
 
 // Barra Lateral
 const sidebarVisible = ref(false)
@@ -46,7 +50,7 @@ function openCloseSidebar() {
       </RouterLink>
       <div class="bag-icon" @click="openCloseSidebar()">
         <!-- modificar con la cantidad de items en carro. Si el carro esta vacio. -->
-        <div class="qty-tag">1</div>
+        <div class="qty-tag" v-show="cartStore.books.length">{{ cartStore.books.length }}</div>
         <ShoppingBagIcon class="w-6 mr-2 text-slate-200" />
       </div>
     </div>
@@ -60,6 +64,7 @@ function openCloseSidebar() {
           <XCircleIcon class="h-8 w-8" @click="openCloseSidebar" />
         </div>
         <!-- aca insertar CarroComponent -->
+         <CartComponent/>
       </div>
     </template>
   </Sidebar>

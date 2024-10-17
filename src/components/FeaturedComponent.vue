@@ -8,10 +8,17 @@ import { BookOpenIcon, ShoppingCartIcon, PlusCircleIcon } from '@heroicons/vue/2
 import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
 
+
 const bookStore = useBookStore();
+const cartStore = useBookStore()
 const featuredBooks: Book[] = bookStore.getFeatured();
 
 // Parcial: Explica como funciona el feature component, como muestra los libros recomendados y como los obtiene?
+/** Los libros tiene el tipo Book que tienen un booleano llamadao feature
+ * En el array de libros se usa el filter usando como condicion ese booleano
+ * y te devuelve todos los libros que tengan el featured verdadero
+ */
+
 
 // configuracion del carrusel
 const cSettings = {
@@ -65,10 +72,11 @@ const cSettings = {
                                 del Autor</button>
 
                             <button
-                                class="flex flex-row rounded-lg border border-slate-200 bg-slate-500 py-1.5 justify-between px-4 font-medium text-white transition-colors hover:bg-slate-950 active:bg-slate-950 disabled:opacity-50">
+                                class="flex flex-row rounded-lg border border-slate-200 bg-slate-500 py-1.5 justify-between px-4 font-medium text-white transition-colors hover:bg-slate-950 active:bg-slate-950 disabled:opacity-50" >
+                                
                                 <PlusCircleIcon class="text-2xl size-6 text-slate-200 m-auto" />
                                 <span class="w-2"></span>
-                                <p class="m-auto">Agregar al carro</p>
+                                <p class="m-auto" >Agregar al carro</p>
                                 <span class="w-2"></span>
                                 <ShoppingCartIcon class="text-2xl size-6 text-slate-200 m-auto" />
                             </button>

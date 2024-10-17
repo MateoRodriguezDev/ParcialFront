@@ -4,7 +4,7 @@ import type { BookState } from "@/models/BookState";
 
 export const useBookStore = defineStore({
     id: 'auth',
-    state: () : BookState => ({
+    state: (): BookState => ({
         loading: false,
         data: [],
     }),
